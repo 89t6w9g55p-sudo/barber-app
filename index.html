@@ -1,227 +1,27 @@
 <!DOCTYPE html>
 <html lang="bg">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Barber Shop</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber Studio | Името на Твоя Салон</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Базови стилове */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #1a1a1a; color: #f0f0f0; line-height: 1.6; scroll-behavior: smooth; }
+        
+        /* Цветове */
+        :root {
+            --primary-gold: #d4af37;
+            --dark-bg: #1a1a1a;
+            --darker-bg: #121212;
+            --text-light: #f0f0f0;
+            --text-dark: #333;
+        }
 
-<style>
-* { box-sizing: border-box; }
-
-body {
-margin: 0;
-font-family: Arial, sans-serif;
-color: white;
-background: #000;
-}
-
-/* BACKGROUND */
-.hero {
-background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
-url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438");
-background-size: cover;
-background-position: center;
-min-height: 100vh;
-}
-
-/* NAVBAR */
-nav {
-display: flex;
-justify-content: space-between;
-align-items: center;
-padding: 15px 20px;
-background: rgba(0,0,0,.85);
-}
-
-nav h1 {
-margin: 0;
-font-size: 22px;
-}
-
-.menu {
-position: relative;
-}
-
-.menu button {
-background: gold;
-border: none;
-padding: 10px 15px;
-font-size: 16px;
-cursor: pointer;
-}
-
-.dropdown {
-display: none;
-position: absolute;
-right: 0;
-background: #111;
-width: 180px;
-}
-
-.dropdown a {
-display: block;
-padding: 12px;
-color: white;
-text-decoration: none;
-border-bottom: 1px solid #333;
-}
-
-.dropdown a:hover {
-background: #222;
-}
-
-.menu.open .dropdown {
-display: block;
-}
-
-/* CONTENT */
-.content {
-text-align: center;
-padding: 60px 20px;
-}
-
-.content h2 {
-font-size: 36px;
-}
-
-.content p {
-font-size: 18px;
-max-width: 600px;
-margin: auto;
-}
-
-/* BOOKING */
-.booking {
-background: #111;
-padding: 30px;
-margin: 20px;
-border-radius: 8px;
-}
-
-input, button {
-width: 100%;
-padding: 12px;
-margin-top: 10px;
-font-size: 16px;
-}
-
-button {
-background: gold;
-border: none;
-cursor: pointer;
-}
-
-.times button {
-width: 48%;
-margin: 5px 1%;
-}
-
-.hidden { display: none; }
-
-footer {
-background: black;
-text-align: center;
-padding: 15px;
-font-size: 14px;
-}
-</style>
-</head>
-
-<body>
-
-<div class="hero">
-
-<nav>
-<h1>💈 BARBER SHOP</h1>
-<div class="menu">
-<button onclick="toggleMenu()">☰ Меню</button>
-<div class="dropdown">
-<a href="#home">Начало</a>
-<a href="#services">Услуги</a>
-<a href="#booking">Запази час</a>
-<a href="tel:+359888123456">📞 Обади се</a>
-</div>
-</div>
-</nav>
-
-<div class="content" id="home">
-<h2>Професионално подстригване</h2>
-<p>Класически и модерни прически. Онлайн записване за удобство.</p>
-</div>
-
-<div class="booking" id="booking">
-<h3>📅 Запази си час</h3>
-
-<input type="date" id="date">
-<div id="times" class="times hidden"></div>
-
-<div id="form" class="hidden">
-<input type="text" id="name" placeholder="Име">
-<input type="tel" id="phone" placeholder="Телефон">
-<button onclick="book()">Потвърди</button>
-</div>
-
-<div id="done" class="hidden">
-<h3>✔️ Успешно записване!</h3>
-</div>
-</div>
-
-</div>
-
-<footer>
-© 2026 Barber Shop | Всички права запазени
-</footer>
-
-<script>
-function toggleMenu() {
-document.querySelector('.menu').classList.toggle('open');
-}
-
-const hours = ["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00"];
-let selectedDate = "";
-let selectedTime = "";
-
-document.getElementById("date").addEventListener("change", function() {
-selectedDate = this.value;
-showTimes();
-});
-
-function showTimes() {
-const times = document.getElementById("times");
-times.innerHTML = "<h4>Свободни часове</h4>";
-times.classList.remove("hidden");
-
-const booked = JSON.parse(localStorage.getItem(selectedDate)) || [];
-
-hours.forEach(time => {
-if (!booked.includes(time)) {
-const b = document.createElement("button");
-b.innerText = time;
-b.onclick = () => selectTime(time);
-times.appendChild(b);
-}
-});
-}
-
-function selectTime(time) {
-selectedTime = time;
-document.getElementById("form").classList.remove("hidden");
-}
-
-function book() {
-const name = document.getElementById("name").value;
-const phone = document.getElementById("phone").value;
-if (!name || !phone) return alert("Попълни име и телефон");
-
-const booked = JSON.parse(localStorage.getItem(selectedDate)) || [];
-booked.push(selectedTime);
-localStorage.setItem(selectedDate, JSON.stringify(booked));
-
-document.getElementById("form").classList.add("hidden");
-document.getElementById("times").classList.add("hidden");
-document.getElementById("done").classList.remove("hidden");
-}
-</script>
-
-</body>
-</html>
+        /* Навигация */
+        nav {
+            background-color: var(--darker-bg);
+            color: var(--text-light);
+            padding:
