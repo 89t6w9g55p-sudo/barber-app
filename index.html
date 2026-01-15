@@ -3,74 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Barber Booking</title>
+<title>Barber Shop</title>
 
 <style>
+* { box-sizing: border-box; }
+
 body {
-font-family: Arial, sans-serif;
-background: #111;
-color: white;
-text-align: center;
 margin: 0;
+font-family: Arial, sans-serif;
+color: white;
+background: #000;
 }
-header {
-padding: 20px;
-background: black;
+
+/* BACKGROUND */
+.hero {
+background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)),
+url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438");
+background-size: cover;
+background-position: center;
+min-height: 100vh;
 }
-.container {
-padding: 20px;
+
+/* NAVBAR */
+nav {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 20px;
+background: rgba(0,0,0,.85);
 }
-input, button {
-padding: 12px;
+
+nav h1 {
+margin: 0;
+font-size: 22px;
+}
+
+.menu {
+position: relative;
+}
+
+.menu button {
+background: gold;
+border: none;
+padding: 10px 15px;
 font-size: 16px;
-margin: 10px;
-width: 90%;
+cursor: pointer;
 }
+
+.dropdown {
+display: none;
+position: absolute;
+right: 0;
+background: #111;
+width: 180px;
+}
+
+.dropdown a {
+display: block;
+padding: 12px;
+color: white;
+text-decoration: none;
+border-bottom: 1px solid #333;
+}
+
+.dropdown a:hover {
+background: #222;
+}
+
+.menu.open .dropdown {
+display: block;
+}
+
+/* CONTENT */
+.content {
+text-align: center;
+padding: 60px 20px;
+}
+
+.content h2 {
+font-size: 36px;
+}
+
+.content p {
+font-size: 18px;
+max-width: 600px;
+margin: auto;
+}
+
+/* BOOKING */
+.booking {
+background: #111;
+padding: 30px;
+margin: 20px;
+border-radius: 8px;
+}
+
+input, button {
+width: 100%;
+padding: 12px;
+margin-top: 10px;
+font-size: 16px;
+}
+
 button {
 background: gold;
 border: none;
 cursor: pointer;
 }
+
 .times button {
-width: 45%;
-margin: 5px;
+width: 48%;
+margin: 5px 1%;
 }
-.hidden {
-display: none;
+
+.hidden { display: none; }
+
+footer {
+background: black;
+text-align: center;
+padding: 15px;
+font-size: 14px;
 }
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>💈 Barber Shop</h1>
-<p>Запази си час</p>
-</header>
+<div class="hero">
 
-<div class="container">
+<nav>
+<h1>💈 BARBER SHOP</h1>
+<div class="menu">
+<button onclick="toggleMenu()">☰ Меню</button>
+<div class="dropdown">
+<a href="#home">Начало</a>
+<a href="#services">Услуги</a>
+<a href="#booking">Запази час</a>
+<a href="tel:+359888123456">📞 Обади се</a>
+</div>
+</div>
+</nav>
 
-<!-- КАЛЕНДАР -->
+<div class="content" id="home">
+<h2>Професионално подстригване</h2>
+<p>Класически и модерни прически. Онлайн записване за удобство.</p>
+</div>
+
+<div class="booking" id="booking">
+<h3>📅 Запази си час</h3>
+
 <input type="date" id="date">
-
-<!-- ЧАСОВЕ -->
 <div id="times" class="times hidden"></div>
 
-<!-- ФОРМА -->
 <div id="form" class="hidden">
 <input type="text" id="name" placeholder="Име">
 <input type="tel" id="phone" placeholder="Телефон">
-<button onclick="book()">Потвърди часа</button>
+<button onclick="book()">Потвърди</button>
 </div>
 
-<!-- ГОТОВО -->
 <div id="done" class="hidden">
-<h2>✔️ Часът е запазен!</h2>
+<h3>✔️ Успешно записване!</h3>
+</div>
 </div>
 
 </div>
+
+<footer>
+© 2026 Barber Shop | Всички права запазени
+</footer>
 
 <script>
+function toggleMenu() {
+document.querySelector('.menu').classList.toggle('open');
+}
+
 const hours = ["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00"];
 let selectedDate = "";
 let selectedTime = "";
@@ -81,18 +187,18 @@ showTimes();
 });
 
 function showTimes() {
-const timesDiv = document.getElementById("times");
-timesDiv.innerHTML = "<h3>Свободни часове</h3>";
-timesDiv.classList.remove("hidden");
+const times = document.getElementById("times");
+times.innerHTML = "<h4>Свободни часове</h4>";
+times.classList.remove("hidden");
 
 const booked = JSON.parse(localStorage.getItem(selectedDate)) || [];
 
 hours.forEach(time => {
 if (!booked.includes(time)) {
-const btn = document.createElement("button");
-btn.innerText = time;
-btn.onclick = () => selectTime(time);
-timesDiv.appendChild(btn);
+const b = document.createElement("button");
+b.innerText = time;
+b.onclick = () => selectTime(time);
+times.appendChild(b);
 }
 });
 }
@@ -105,11 +211,7 @@ document.getElementById("form").classList.remove("hidden");
 function book() {
 const name = document.getElementById("name").value;
 const phone = document.getElementById("phone").value;
-
-if (!name || !phone) {
-alert("Моля попълни име и телефон");
-return;
-}
+if (!name || !phone) return alert("Попълни име и телефон");
 
 const booked = JSON.parse(localStorage.getItem(selectedDate)) || [];
 booked.push(selectedTime);
