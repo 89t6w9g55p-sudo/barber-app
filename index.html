@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Премиум Бръснарница "Острието" - Запазете Час</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://www.flaticon.com/svg/static/icons/svg/2916/2916327.svg" type="image/svg+xml">
+    <link rel="icon" href="https://img.icons8.com/ios-filled/50/D4AF37/barbershop.png" type="image/png">
 </head>
 <body>
 
     <header>
         <nav>
-            <div class="logo">ОСТРИЕТО</div>
+            <a href="#" class="logo">ОСТРИЕТО</a>
             <ul class="nav-links">
                 <li><a href="#начало">Начало</a></li>
+                <li><a href="#запази-час">Запази Час</a></li>
                 <li><a href="#услуги">Услуги</a></li>
                 <li><a href="#галерия">Галерия</a></li>
-                <li><a href="#запази-час">Запази Час</a></li>
                 <li><a href="#контакти">Контакти</a></li>
             </ul>
             <div class="burger">
@@ -30,15 +30,15 @@
     <main>
         <section id="начало" class="hero">
             <div class="hero-content">
-                <h1>Острието - За Стилен Мъж</h1>
-                <p>Изкуството на бръснарството, съчетано с модерна визия. Време е за промяна!</p>
-                <button class="btn-main scroll-to-booking">Запази Час Сега</button>
+                <h1>Острието</h1>
+                <p>Изкуството на мъжкото подстригване. Стил, който говори вместо теб.</p>
+                <a href="#запази-час" class="btn-main">Запази час сега</a>
             </div>
         </section>
 
         <section id="запази-час" class="booking-section">
-            <h2>Запази Час</h2>
-            <p class="section-description">Избери удобна дата и час за твоята перфектна визия.</p>
+            <h2>Запази своя час</h2>
+            <p class="section-description">Избери удобен ден и услуга. Ние ще се погрижим за останалото.</p>
             <div class="booking-container">
                 <div class="calendar">
                     <h3>Избери Дата</h3>
@@ -50,42 +50,36 @@
                         <div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div>
                         <div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
                     </div>
-                    <div class="month-nav">
-                        <button>&lt; Предишен</button>
-                        <span>Януари 2026</span>
-                        <button>Следващ &gt;</button>
-                    </div>
                 </div>
+
                 <div class="booking-form">
-                    <h3>Избери Час и Услуга</h3>
+                    <h3>Детайли за резервация</h3>
                     <form>
-                        <label for="time">Избери Час:</label>
-                        <select id="time" name="time">
-                            <option value="10:00">10:00</option>
-                            <option value="10:30">10:30</option>
-                            <option value="11:00">11:00</option>
-                            <option value="11:30">11:30</option>
-                            <option value="12:00">12:00</option>
-                            <option value="13:00">13:00</option>
-                            <option value="13:30">13:30</option>
-                            <option value="14:00">14:00</option>
-                        </select>
-
-                        <label for="service">Избери Услуга:</label>
+                        <label for="service">Услуга</label>
                         <select id="service" name="service">
-                            <option value="подстригване">Класическо подстригване</option>
-                            <option value="брада">Оформяне на брада</option>
-                            <option value="комбо">Подстригване + Брада</option>
-                            <option value="детско">Детско подстригване</option>
+                            <option value="подстригване">Класическо подстригване - 25 лв.</option>
+                            <option value="брада">Оформяне на брада - 15 лв.</option>
+                            <option value="комбо">Комбо (Коса + Брада) - 35 лв.</option>
+                            <option value="кралско">Кралско бръснене - 30 лв.</option>
                         </select>
 
-                        <label for="name">Вашето Име:</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="time">Час</label>
+                        <select id="time" name="time">
+                            <option value="10:00">10:00 ч.</option>
+                            <option value="11:00">11:00 ч.</option>
+                            <option value="13:00">13:00 ч.</option>
+                            <option value="14:00">14:00 ч.</option>
+                            <option value="15:00">15:00 ч.</option>
+                            <option value="16:00">16:00 ч.</option>
+                        </select>
 
-                        <label for="phone">Телефонен Номер:</label>
-                        <input type="tel" id="phone" name="phone" required>
+                        <label for="name">Твоето име</label>
+                        <input type="text" id="name" placeholder="Име и фамилия" required>
 
-                        <button type="submit" class="btn-main">Потвърди Час</button>
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" placeholder="088X XXX XXX" required>
+
+                        <button type="submit" class="btn-main">Потвърди резервацията</button>
                     </form>
                 </div>
             </div>
@@ -93,51 +87,62 @@
 
         <section id="услуги" class="services-section">
             <h2>Нашите Услуги</h2>
-            <p class="section-description">Открий перфектната грижа за твоя стил.</p>
             <div class="service-cards">
                 <div class="card">
-                    <h3>Класическо Подстригване</h3>
-                    <p>Традиционно подстригване с внимание към детайла и модерна визия.</p>
-                    <span>Цена: 25 лв.</span>
+                    <h3>Подстригване</h3>
+                    <p>Модерни и класически визии, съобразени с формата на лицето.</p>
                 </div>
                 <div class="card">
-                    <h3>Оформяне на Брада</h3>
-                    <p>Професионално оформяне на брада с гореща кърпа и прецизни инструменти.</p>
-                    <span>Цена: 15 лв.</span>
+                    <h3>Брада</h3>
+                    <p>Прецизно контуриране и поддръжка с висококачествени масла.</p>
                 </div>
                 <div class="card">
-                    <h3>Пълен Пакет "Острието"</h3>
-                    <p>Подстригване, бръснене и маска за лице за пълна релаксация.</p>
-                    <span>Цена: 40 лв.</span>
+                    <h3>Грижа</h3>
+                    <p>Маски за лице и терапия с гореща кърпа за пълна релаксация.</p>
                 </div>
             </div>
         </section>
 
         <section id="галерия" class="gallery-section">
-            <h2>Нашата Галерия</h2>
-            <p class="section-description">Вдъхнови се от нашите творения.</p>
+            <h2>Галерия</h2>
             <div class="gallery-grid">
-                <img src="https://via.placeholder.com/300x200?text=Стил+1" alt="Прическа 1">
-                <img src="https://via.placeholder.com/300x200?text=Брада+2" alt="Брада 2">
-                <img src="https://via.placeholder.com/300x200?text=Свеж+Вид+3" alt="Свеж Вид 3">
-                <img src="https://via.placeholder.com/300x200?text=Клиент+4" alt="Клиент 4">
+                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=300&h=400&fit=crop" alt="Стил 1">
+                <img src="https://images.unsplash.com/photo-1622286332618-f2803b114283?q=80&w=300&h=400&fit=crop" alt="Стил 2">
+                <img src="https://images.unsplash.com/photo-1593702295094-272cdd1b8fdc?q=80&w=300&h=400&fit=crop" alt="Стил 3">
+                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=300&h=400&fit=crop" alt="Стил 4">
             </div>
         </section>
 
-        <section id="контакти" class="contact-section">
-            <h2>Свържете се с нас</h2>
-            <p class="section-description">Очакваме ви!</p>
-            <div class="contact-info">
-                <p><strong>Адрес:</strong> бул. Витоша 10, София</p>
-                <p><strong>Телефон:</strong> +359 888 123 456</p>
-                <p><strong>Имейл:</strong> info@ostrieto.bg</p>
-                <div class="social-media">
-                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/facebook-new.png" alt="Facebook"></a>
-                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram"></a>
+        <section class="reviews-section">
+            <h2>Какво казват клиентите</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <p>"Най-доброто подстригване в града! Вниманието към детайла е на друго ниво."</p>
+                    <h4>- Калоян Петров</h4>
+                </div>
+                <div class="review-card">
+                    <p>"Страхотна атмосфера и професионализъм. Вече съм редовен клиент!"</p>
+                    <h4>- Мартин Иванов</h4>
+                </div>
+                <div class="review-card">
+                    <p>"Златни ръце! Оформянето на брада беше перфектно."</p>
+                    <h4>- Стефан Колев</h4>
                 </div>
             </div>
         </section>
 
+        <section id="контакти" class="contact-section">
+            <h2>Контакти</h2>
+            <div class="contact-info">
+                <p><strong>Адрес:</strong> бул. Витоша 10, София</p>
+                <p><strong>Телефон:</strong> +359 888 123 456</p>
+                <p><strong>Работно време:</strong> Пон - Съб: 10:00 - 20:00</p>
+                <div class="social-media">
+                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/D4AF37/facebook-new.png" alt="Facebook"></a>
+                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/D4AF37/instagram-new.png" alt="Instagram"></a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
