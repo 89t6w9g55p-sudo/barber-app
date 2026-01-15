@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Премиум Бръснарница "Острието" - Запазете Час</title>
+    <title>Ivanel Cut | Premium Grooming Габрово</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="https://img.icons8.com/ios-filled/50/D4AF37/barbershop.png" type="image/png">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1004/1004663.png" type="image/png">
 </head>
 <body>
 
     <header>
         <nav>
-            <a href="#" class="logo">ОСТРИЕТО</a>
+            <a href="#" class="logo">Ivanel Cut</a>
             <ul class="nav-links">
                 <li><a href="#начало">Начало</a></li>
                 <li><a href="#запази-час">Запази Час</a></li>
@@ -19,136 +19,169 @@
                 <li><a href="#галерия">Галерия</a></li>
                 <li><a href="#контакти">Контакти</a></li>
             </ul>
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
         </nav>
     </header>
 
     <main>
         <section id="начало" class="hero">
             <div class="hero-content">
-                <h1>Острието</h1>
-                <p>Изкуството на мъжкото подстригване. Стил, който говори вместо теб.</p>
+                <h1>Ivanel Cut</h1>
+                <p>Изкуството на мъжкото подстригване. Стил, създаден с прецизност в Габрово.</p>
                 <a href="#запази-час" class="btn-main">Запази час сега</a>
             </div>
         </section>
 
         <section id="запази-час" class="booking-section">
-            <h2>Запази своя час</h2>
-            <p class="section-description">Избери удобен ден и услуга. Ние ще се погрижим за останалото.</p>
-            <div class="booking-container">
-                <div class="calendar">
-                    <h3>Избери Дата</h3>
-                    <div class="calendar-grid">
-                        <div class="day header">Пон</div><div class="day header">Вт</div><div class="day header">Ср</div><div class="day header">Чет</div><div class="day header">Пет</div><div class="day header">Съб</div><div class="day header">Нед</div>
-                        <div class="day disabled"></div><div class="day disabled"></div><div class="day">1</div><div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div>
-                        <div class="day">6</div><div class="day">7</div><div class="day active">8</div><div class="day">9</div><div class="day">10</div><div class="day">11</div><div class="day">12</div>
-                        <div class="day">13</div><div class="day">14</div><div class="day">15</div><div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div>
-                        <div class="day">20</div><div class="day">21</div><div class="day">22</div><div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div>
-                        <div class="day">27</div><div class="day">28</div><div class="day">29</div><div class="day">30</div><div class="day">31</div>
+            <div class="container-wide">
+                <h2 class="gold-title">Запази своя час</h2>
+                <p class="section-desc">Избери удобен месец и дата от нашия календар за 2026 г.</p>
+                
+                <div class="booking-container-large">
+                    <div class="calendar-box">
+                        <h3>1. Избери Дата (2026)</h3>
+                        <div class="year-calendar" id="yearCalendar"></div>
                     </div>
-                </div>
 
-                <div class="booking-form">
-                    <h3>Детайли за резервация</h3>
-                    <form>
-                        <label for="service">Услуга</label>
-                        <select id="service" name="service">
-                            <option value="подстригване">Класическо подстригване - 25 лв.</option>
-                            <option value="брада">Оформяне на брада - 15 лв.</option>
-                            <option value="комбо">Комбо (Коса + Брада) - 35 лв.</option>
-                            <option value="кралско">Кралско бръснене - 30 лв.</option>
-                        </select>
+                    <div class="form-box">
+                        <h3>2. Детайли за резервация</h3>
+                        <form id="bookingForm">
+                            <label>Избрана дата</label>
+                            <input type="text" id="selectedDateDisplay" value="Кликни върху дата от календара" readonly style="background: #f0f0f0; color: #D4AF37; font-weight: bold; border: 1px solid #D4AF37;">
 
-                        <label for="time">Час</label>
-                        <select id="time" name="time">
-                            <option value="10:00">10:00 ч.</option>
-                            <option value="11:00">11:00 ч.</option>
-                            <option value="13:00">13:00 ч.</option>
-                            <option value="14:00">14:00 ч.</option>
-                            <option value="15:00">15:00 ч.</option>
-                            <option value="16:00">16:00 ч.</option>
-                        </select>
+                            <label>Услуга</label>
+                            <select id="service" name="service">
+                                <option value="Подстригване">Класическо подстригване - 25 лв.</option>
+                                <option value="Брада">Оформяне на брада - 15 лв.</option>
+                                <option value="Комбо">Комбо (Коса + Брада) - 35 лв.</option>
+                                <option value="Кралско">Кралско бръснене - 30 лв.</option>
+                            </select>
 
-                        <label for="name">Твоето име</label>
-                        <input type="text" id="name" placeholder="Име и фамилия" required>
+                            <label>Час</label>
+                            <select id="time" name="time">
+                                <option>09:00 ч.</option><option>10:00 ч.</option><option>11:00 ч.</option>
+                                <option>12:00 ч.</option><option>13:00 ч.</option><option>14:00 ч.</option>
+                                <option>15:00 ч.</option><option>16:00 ч.</option><option>17:00 ч.</option>
+                                <option>18:00 ч.</option><option>19:00 ч.</option><option>20:00 ч.</option>
+                            </select>
 
-                        <label for="phone">Телефон</label>
-                        <input type="tel" id="phone" placeholder="088X XXX XXX" required>
+                            <label>Твоето име</label>
+                            <input type="text" id="name" placeholder="Име и фамилия" required>
+                            
+                            <label>Телефон</label>
+                            <input type="tel" id="phone" placeholder="0876 333 668" required>
 
-                        <button type="submit" class="btn-main">Потвърди резервацията</button>
-                    </form>
+                            <button type="submit" class="btn-gold-full">Потвърди в IvanelCut</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="услуги" class="services-section">
-            <h2>Нашите Услуги</h2>
-            <div class="service-cards">
-                <div class="card">
-                    <h3>Подстригване</h3>
-                    <p>Модерни и класически визии, съобразени с формата на лицето.</p>
-                </div>
-                <div class="card">
-                    <h3>Брада</h3>
-                    <p>Прецизно контуриране и поддръжка с висококачествени масла.</p>
-                </div>
-                <div class="card">
-                    <h3>Грижа</h3>
-                    <p>Маски за лице и терапия с гореща кърпа за пълна релаксация.</p>
+            <div class="container">
+                <h2 class="gold-title">Нашето Меню</h2>
+                <div class="service-cards">
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('https://images.pexels.com/photos/2040189/pexels-photo-2040189.jpeg?auto=compress&cs=tinysrgb&h=600');"></div>
+                        <div class="card-info">
+                            <h3>Брада</h3>
+                            <span class="price">15 лв.</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('https://images.pexels.com/photos/1319461/pexels-photo-1319461.jpeg?auto=compress&cs=tinysrgb&h=600');"></div>
+                        <div class="card-info">
+                            <h3>Подстригване</h3>
+                            <span class="price">25 лв.</span>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-img" style="background-image: url('https://images.pexels.com/photos/1813272/pexels-photo-1813272.jpeg?auto=compress&cs=tinysrgb&h=600');"></div>
+                        <div class="card-info">
+                            <h3>Пълен пакет</h3>
+                            <span class="price">35 лв.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section id="галерия" class="gallery-section">
-            <h2>Галерия</h2>
+            <h2 class="gold-title">Галерия</h2>
+            <p class="section-desc" style="color: #666; text-align: center; margin-bottom: 30px;">Трансформации от Ivanel Cut</p>
             <div class="gallery-grid">
-                <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=300&h=400&fit=crop" alt="Стил 1">
-                <img src="https://images.unsplash.com/photo-1622286332618-f2803b114283?q=80&w=300&h=400&fit=crop" alt="Стил 2">
-                <img src="https://images.unsplash.com/photo-1593702295094-272cdd1b8fdc?q=80&w=300&h=400&fit=crop" alt="Стил 3">
-                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=300&h=400&fit=crop" alt="Стил 4">
-            </div>
-        </section>
-
-        <section class="reviews-section">
-            <h2>Какво казват клиентите</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <p>"Най-доброто подстригване в града! Вниманието към детайла е на друго ниво."</p>
-                    <h4>- Калоян Петров</h4>
-                </div>
-                <div class="review-card">
-                    <p>"Страхотна атмосфера и професионализъм. Вече съм редовен клиент!"</p>
-                    <h4>- Мартин Иванов</h4>
-                </div>
-                <div class="review-card">
-                    <p>"Златни ръце! Оформянето на брада беше перфектно."</p>
-                    <h4>- Стефан Колев</h4>
-                </div>
+                <img src="https://images.pexels.com/photos/1319459/pexels-photo-1319459.jpeg?auto=compress&cs=tinysrgb&w=500" alt="IvanelCut 1">
+                <img src="https://images.pexels.com/photos/1570807/pexels-photo-1570807.jpeg?auto=compress&cs=tinysrgb&w=500" alt="IvanelCut 2">
+                <img src="https://images.pexels.com/photos/705255/pexels-photo-705255.jpeg?auto=compress&cs=tinysrgb&w=500" alt="IvanelCut 3">
+                <img src="https://images.pexels.com/photos/897262/pexels-photo-897262.jpeg?auto=compress&cs=tinysrgb&w=500" alt="IvanelCut 4">
             </div>
         </section>
 
         <section id="контакти" class="contact-section">
-            <h2>Контакти</h2>
-            <div class="contact-info">
-                <p><strong>Адрес:</strong> бул. Витоша 10, София</p>
-                <p><strong>Телефон:</strong> +359 888 123 456</p>
-                <p><strong>Работно време:</strong> Пон - Съб: 10:00 - 20:00</p>
-                <div class="social-media">
-                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/D4AF37/facebook-new.png" alt="Facebook"></a>
-                    <a href="#"><img src="https://img.icons8.com/ios-filled/50/D4AF37/instagram-new.png" alt="Instagram"></a>
-                </div>
+            <h2 class="gold-title">Контакти</h2>
+            <div class="contact-box">
+                <p>📍 <strong>Адрес:</strong> <a href="https://maps.google.com" target="_blank" style="color: white; text-decoration: underline;">гр. Габрово, ул. "Зелена ливада" 6</a></p>
+                <p>📞 <strong>Телефон:</strong> <a href="tel:+359876333668" style="color: #D4AF37; text-decoration: none; font-weight: bold;">0876 333 668</a></p>
+                <p>⏰ <strong>Работно време:</strong> Пон - Нед: 09:00 - 21:00</p>
             </div>
         </section>
     </main>
+    
+    <div style="clear: both; margin-bottom: 40px;"></div> 
 
-    <footer>
-        <p>&copy; 2026 Острието. Всички права запазени.</p>
+    <footer style="background-color: #111; color: #666; text-align: center; padding: 40px 20px; border-top: 1px solid #333;">
+        <p>© 2026 <strong>Vrachev</strong> - Габрово. Всички права запазени.</p>
     </footer>
 
+    <script>
+        const calendarContainer = document.getElementById('yearCalendar');
+        const monthNames = ["Януари", "Февруари", "Март", "Април", "Май", "Юни", "Юли", "Август", "Септември", "Октомври", "Ноември", "Декември"];
+        const dayLabels = ["П", "В", "С", "Ч", "П", "С", "Н"];
+
+        for (let month = 0; month < 12; month++) {
+            const monthDiv = document.createElement('div');
+            monthDiv.className = 'month';
+            
+            const title = document.createElement('h4');
+            title.innerText = monthNames[month] + " 2026";
+            monthDiv.appendChild(title);
+
+            const grid = document.createElement('div');
+            grid.className = 'calendar-grid';
+
+            dayLabels.forEach(label => {
+                const header = document.createElement('div');
+                header.className = 'day header';
+                header.innerText = label;
+                grid.appendChild(header);
+            });
+
+            const firstDay = new Date(2026, month, 1).getDay();
+            const offset = firstDay === 0 ? 6 : firstDay - 1; 
+            const daysInMonth = new Date(2026, month + 1, 0).getDate();
+
+            for (let i = 0; i < offset; i++) {
+                const empty = document.createElement('div');
+                empty.className = 'day disabled';
+                grid.appendChild(empty);
+            }
+
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'day';
+                dayCell.innerText = day;
+                dayCell.onclick = function() {
+                    document.querySelectorAll('.day').forEach(d => d.classList.remove('active'));
+                    this.classList.add('active');
+                    document.getElementById('selectedDateDisplay').value = day + " " + monthNames[month] + " 2026 г.";
+                };
+                grid.appendChild(dayCell);
+            }
+
+            monthDiv.appendChild(grid);
+            calendarContainer.appendChild(monthDiv);
+        }
+    </script>
     <script src="app.js"></script>
 </body>
 </html>
