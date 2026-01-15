@@ -1,0 +1,258 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #D4AF37; /* Златно */
+    --secondary-color: #1a1a1a;
+    --dark-bg: #0f0f0f;
+    --light-bg: #ffffff;
+    --text-light: #ffffff;
+    --text-dark: #222222;
+    --transition: all 0.4s ease;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Навигация */
+header {
+    background: rgba(15, 15, 15, 0.98);
+    color: var(--text-light);
+    padding: 1.2rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--primary-color);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    letter-spacing: 2px;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-light);
+    font-weight: bold;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* ГЛАВНА СЕКЦИЯ */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+                url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop') 
+                no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    text-shadow: 4px 4px 20px rgba(0,0,0,0.8);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.btn-main {
+    background: var(--primary-color);
+    color: #000;
+    padding: 18px 45px;
+    border: none;
+    border-radius: 0; /* Остър, модерен дизайн */
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-main:hover {
+    background: #fff;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+/* СЕКЦИЯ ЗАПАЗВАНЕ - ПОПРАВЕНА */
+.booking-section {
+    padding: 100px 20px;
+    background: #fdfdfd;
+}
+
+.booking-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.calendar, .booking-form {
+    background: #fff;
+    padding: 40px;
+    border-radius: 5px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+    flex: 1;
+    min-width: 350px;
+    border-top: 5px solid var(--primary-color);
+}
+
+.calendar h3, .booking-form h3 {
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.day {
+    padding: 15px 5px;
+    border: 1px solid #eee;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.day:hover:not(.header) {
+    background: #f9f4e8;
+}
+
+.day.header {
+    background: #111;
+    color: #fff;
+    font-size: 0.8rem;
+}
+
+.day.active {
+    background: var(--primary-color) !important;
+    color: #000;
+    font-weight: bold;
+}
+
+/* ПОПРАВЕНИ ПОЛЕТА ВЪВ ФОРМАТА */
+.booking-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.booking-form label {
+    font-weight: bold;
+    margin-bottom: -15px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.booking-form input, .booking-form select {
+    padding: 15px;
+    border: 1px solid #ddd;
+    background: #fcfcfc;
+    font-size: 1rem;
+    border-radius: 4px;
+    outline: none;
+}
+
+.booking-form input:focus {
+    border-color: var(--primary-color);
+}
+
+/* СЕКЦИЯ ОТЗИВИ (НОВОТО ЯКО НЕЩО) */
+.reviews-section {
+    background: var(--dark-bg);
+    color: #fff;
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 50px auto 0;
+}
+
+.review-card {
+    background: #222;
+    padding: 40px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.review-card p {
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.review-card h4 {
+    margin-top: 20px;
+    color: var(--primary-color);
+}
+
+/* УСЛУГИ */
+.card {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 40px;
+    transition: var(--transition);
+    border-bottom: 5px solid var(--primary-color);
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+/* Футър */
+footer {
+    background: #000;
+    color: #777;
+    text-align: center;
+    padding: 40px;
+}
