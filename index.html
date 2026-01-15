@@ -46,7 +46,7 @@
                         <h3>2. Детайли за резервация</h3>
                         <form action="https://formspree.io/f/mpqqwknr" method="POST" id="bookingForm">
                             <label>Избрана дата</label>
-                            <input type="text" id="selectedDateDisplay" name="Дата" value="Кликни върху дата от календара" readonly style="background: #f0f0f0; color: #D4AF37; font-weight: bold; border: 1px solid #D4AF37;">
+                            <input type="text" id="selectedDateDisplay" name="Избрана Дата" value="Кликни върху дата от календара" readonly style="background: #f0f0f0; color: #D4AF37; font-weight: bold; border: 1px solid #D4AF37;">
 
                             <label>Услуга</label>
                             <select id="service" name="Услуга">
@@ -65,10 +65,10 @@
                             </select>
 
                             <label>Твоето име</label>
-                            <input type="text" id="name" name="Име" placeholder="Име и фамилия" required>
+                            <input type="text" id="name" name="Име на клиент" placeholder="Име и фамилия" required>
                             
                             <label>Телефон</label>
-                            <input type="tel" id="phone" name="Телефон" placeholder="0876 333 668" required>
+                            <input type="tel" id="phone" name="Телефон за връзка" placeholder="0876 333 668" required>
 
                             <input type="hidden" name="_subject" value="Нова резервация - Ivanel Cut">
 
@@ -122,7 +122,7 @@
         <section id="контакти" class="contact-section">
             <h2 class="gold-title">Контакти</h2>
             <div class="contact-box">
-                <p>📍 <strong>Адрес:</strong> <a href="https://www.google.com/maps/search/?api=1&query=Габрово+Зелена+ливада+6" target="_blank" style="color: white; text-decoration: underline;">гр. Габрово, ул. "Зелена ливада" 6</a></p>
+                <p>📍 <strong>Адрес:</strong> <a href="https://www.google.com/maps" target="_blank" style="color: white; text-decoration: underline;">гр. Габрово, ул. "Зелена ливада" 6</a></p>
                 <p>📞 <strong>Телефон:</strong> <a href="tel:+359876333668" style="color: #D4AF37; text-decoration: none; font-weight: bold;">0876 333 668</a></p>
                 <p>⏰ <strong>Работно време:</strong> Пон - Нед: 09:00 - 21:00</p>
             </div>
@@ -184,6 +184,5 @@
             calendarContainer.appendChild(monthDiv);
         }
     </script>
-    <script src="app.js"></script>
 </body>
 </html>
