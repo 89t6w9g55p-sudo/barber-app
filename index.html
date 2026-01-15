@@ -3,79 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Barber Shop</title>
+<title>Barber Booking</title>
+
 <style>
 body {
-margin: 0;
 font-family: Arial, sans-serif;
 background: #111;
 color: white;
 text-align: center;
+margin: 0;
 }
 header {
-padding: 30px;
+padding: 20px;
 background: black;
 }
+.container {
+padding: 20px;
+}
+input, button {
+padding: 12px;
+font-size: 16px;
+margin: 10px;
+width: 90%;
+}
 button {
-padding: 15px;
-font-size: 18px;
 background: gold;
 border: none;
-width: 80%;
-margin-top: 20px;
+cursor: pointer;
 }
-input, select {
-width: 80%;
-padding: 12px;
-margin-top: 10px;
-font-size: 16px;
+.times button {
+width: 45%;
+margin: 5px;
 }
-.section {
+.hidden {
 display: none;
-}
-.section.active {
-display: block;
 }
 </style>
 </head>
+
 <body>
 
 <header>
 <h1>💈 Barber Shop</h1>
-<p>Запази си час онлайн</p>
+<p>Запази си час</p>
 </header>
 
-<div class="section active" id="home">
-<button onclick="show('booking')">Запази час</button>
-</div>
+<div class="container">
 
-<div class="section" id="booking">
-<select id="service">
-<option>Подстригване – 20 лв</option>
-<option>Брада – 10 лв</option>
-<option>Подстригване + брада – 25 лв</option>
-</select>
-
+<!-- КАЛЕНДАР -->
 <input type="date" id="date">
-<input type="time" id="time">
-<input type="text" placeholder="Име">
-<input type="tel" placeholder="Телефон">
 
-<button onclick="done()">Потвърди</button>
+<!-- ЧАСОВЕ -->
+<div id="times" class="times hidden"></div>
+
+<!-- ФОРМА -->
+<div id="form" class="hidden">
+<input type="text" id="name" placeholder="Име">
+<input type="tel" id="phone" placeholder="Телефон">
+<button onclick="book()">Потвърди часа</button>
 </div>
 
-<div class="section" id="done">
-<h2>✔️ Успешно записване!</h2>
-<p>Ще се свържем с теб.</p>
+<!-- ГОТОВО -->
+<div id="done" class="hidden">
+<h2>✔️ Часът е запазен!</h2>
+</div>
+
 </div>
 
 <script>
-function show(id) {
-document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
+const hours = ["09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00"];
+let selectedDate = "";
+let selectedTime = "";
+
+document.getElementById("date").addEventListener("change", function() {
+selectedDate = this.value;
+showTimes();
+});
+
+function showTimes() {
+const timesDiv = document.getElementById("times");
+timesDiv.innerHTML = "<h3>Свободни часове</h3>";
+timesDiv.classList.remove("hidden");
+
+const booked = JSON.parse(localStorage.getItem(selectedDate)) || [];
+
+hours.forEach(time => {
+if (!booked.includes(time)) {
+const btn = document.createElement("button");
+btn.innerText = time;
+btn.onclick = () => selectTime(time);
+timesDiv.appendChild(btn);
 }
-function done() {
-show('done');
+});
+}
+
+function selectTime(time) {
+selectedTime = time;
+document.getElementById("form").classList.remove("hidden");
+}
+
+function book() {
+const name = document.getElementById("name").value;
+const phone = document.getElementById("phone").value;
+
+if (!name || !phone) {
+alert("Моля попълни име и телефон");
+return;
+}
+
+const booked = JSON.parse(localStorage.getItem(selectedDate)) || [];
+booked.push(selectedTime);
+localStorage.setItem(selectedDate, JSON.stringify(booked));
+
+document.getElementById("form").classList.add("hidden");
+document.getElementById("times").classList.add("hidden");
+document.getElementById("done").classList.remove("hidden");
 }
 </script>
 
