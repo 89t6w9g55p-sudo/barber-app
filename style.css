@@ -2,13 +2,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;700&display=swap');
 
 :root {
-    --primary-color: #D4AF37; /* Златно */
+    --primary-color: #D4AF37; /* Премиум Златно */
     --secondary-color: #1a1a1a;
-    --dark-bg: #0f0f0f;
+    --dark-bg: #0a0a0a;
     --light-bg: #ffffff;
     --text-light: #ffffff;
-    --text-dark: #222222;
-    --transition: all 0.4s ease;
+    --text-dark: #1a1a1a;
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 body {
@@ -21,9 +21,9 @@ body {
     overflow-x: hidden;
 }
 
-/* Навигация */
+/* --- НАВИГАЦИЯ --- */
 header {
-    background: rgba(15, 15, 15, 0.98);
+    background: rgba(10, 10, 10, 0.98);
     color: var(--text-light);
     padding: 1.2rem 0;
     position: fixed;
@@ -31,6 +31,7 @@ header {
     top: 0;
     z-index: 1000;
     border-bottom: 2px solid var(--primary-color);
+    backdrop-filter: blur(10px);
 }
 
 nav {
@@ -46,8 +47,10 @@ nav {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
     color: var(--primary-color);
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .nav-links {
@@ -58,8 +61,9 @@ nav {
 
 .nav-links a {
     color: var(--text-light);
-    font-weight: bold;
     text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
     transition: var(--transition);
 }
 
@@ -67,9 +71,9 @@ nav {
     color: var(--primary-color);
 }
 
-/* ГЛАВНА СЕКЦИЯ */
+/* --- HERO СЕКЦИЯ --- */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
                 url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=2070&auto=format&fit=crop') 
                 no-repeat center center/cover;
     height: 100vh;
@@ -77,22 +81,21 @@ nav {
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: var(--text-light);
 }
 
 .hero-content h1 {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 10vw, 5.5rem);
+    font-size: clamp(4rem, 15vw, 7rem);
     color: var(--primary-color);
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     text-transform: uppercase;
-    text-shadow: 4px 4px 20px rgba(0,0,0,0.8);
 }
 
 .hero-content p {
+    color: #fff;
     font-size: 1.5rem;
-    margin-bottom: 2.5rem;
-    font-weight: 300;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
 }
 
 .btn-main {
@@ -100,13 +103,14 @@ nav {
     color: #000;
     padding: 18px 45px;
     border: none;
-    border-radius: 0; /* Остър, модерен дизайн */
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: bold;
     transition: var(--transition);
     text-transform: uppercase;
     letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
 }
 
 .btn-main:hover {
@@ -115,35 +119,66 @@ nav {
     box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
 }
 
-/* СЕКЦИЯ ЗАПАЗВАНЕ - ПОПРАВЕНА */
+/* --- РЕЗЕРВАЦИЯ С ГОДИШЕН КАЛЕНДАР --- */
 .booking-section {
-    padding: 100px 20px;
-    background: #fdfdfd;
+    padding: 120px 20px;
+    background: #f4f4f4;
+    text-align: center;
 }
 
-.booking-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    max-width: 1200px;
+.container-wide {
+    max-width: 1300px;
     margin: auto;
 }
 
-.calendar, .booking-form {
-    background: #fff;
-    padding: 40px;
-    border-radius: 5px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-    flex: 1;
-    min-width: 350px;
-    border-top: 5px solid var(--primary-color);
+.gold-title {
+    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
-.calendar h3, .booking-form h3 {
-    margin-bottom: 25px;
-    font-size: 1.8rem;
+.booking-container-large {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.calendar-box, .form-box {
+    background: #fff;
+    padding: 50px;
+    flex: 1;
+    min-width: 450px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    border-top: 6px solid var(--primary-color);
+    text-align: left;
+}
+
+/* НОВО: Стил за превъртането на месеците */
+.year-calendar {
+    max-height: 500px;
+    overflow-y: auto;
+    padding-right: 15px;
+    border: 1px solid #eee;
+    padding: 15px;
+    background: #fafafa;
+}
+
+.month {
+    margin-bottom: 40px;
+}
+
+.month h4 {
     text-align: center;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 10px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .calendar-grid {
@@ -153,106 +188,206 @@ nav {
 }
 
 .day {
-    padding: 15px 5px;
-    border: 1px solid #eee;
+    padding: 12px;
     text-align: center;
     cursor: pointer;
+    border: 1px solid #eee;
+    font-weight: bold;
+    background: #fff;
+    font-size: 0.9rem;
     transition: 0.2s;
 }
 
-.day:hover:not(.header) {
-    background: #f9f4e8;
+.day.header {
+    background: #1a1a1a;
+    color: #fff;
+    cursor: default;
 }
 
-.day.header {
-    background: #111;
-    color: #fff;
-    font-size: 0.8rem;
+.day.disabled {
+    background: #f9f9f9;
+    color: #ccc;
+    border: none;
+    cursor: default;
+}
+
+.day:hover:not(.header):not(.disabled) {
+    background: #f0f0f0;
 }
 
 .day.active {
     background: var(--primary-color) !important;
-    color: #000;
-    font-weight: bold;
+    color: #000 !important;
+    transform: scale(1.1);
 }
 
-/* ПОПРАВЕНИ ПОЛЕТА ВЪВ ФОРМАТА */
-.booking-form form {
+/* Форма */
+.form-box form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
 }
 
-.booking-form label {
-    font-weight: bold;
-    margin-bottom: -15px;
-    font-size: 0.9rem;
-    color: #555;
-}
-
-.booking-form input, .booking-form select {
+.form-box input, .form-box select {
     padding: 15px;
     border: 1px solid #ddd;
-    background: #fcfcfc;
     font-size: 1rem;
-    border-radius: 4px;
-    outline: none;
+    border-radius: 5px;
 }
 
-.booking-form input:focus {
-    border-color: var(--primary-color);
-}
-
-/* СЕКЦИЯ ОТЗИВИ (НОВОТО ЯКО НЕЩО) */
-.reviews-section {
-    background: var(--dark-bg);
-    color: #fff;
-    padding: 100px 20px;
-    text-align: center;
-}
-
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    max-width: 1200px;
-    margin: 50px auto 0;
-}
-
-.review-card {
-    background: #222;
-    padding: 40px;
-    border-radius: 10px;
-    position: relative;
-}
-
-.review-card p {
-    font-style: italic;
-    font-size: 1.1rem;
-}
-
-.review-card h4 {
+.btn-gold-full {
+    background: var(--primary-color);
+    color: #000;
+    padding: 20px;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
     margin-top: 20px;
+    font-size: 1.1rem;
+    transition: var(--transition);
+}
+
+.btn-gold-full:hover {
+    background: #000;
     color: var(--primary-color);
 }
 
-/* УСЛУГИ */
+/* Скрол лента за календара */
+.year-calendar::-webkit-scrollbar { width: 6px; }
+.year-calendar::-webkit-scrollbar-thumb { background: var(--primary-color); border-radius: 10px; }
+
+/* --- КАРТИ УСЛУГИ --- */
+.services-section {
+    padding: 100px 20px;
+    background: #fff;
+    text-align: center;
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 60px auto;
+}
+
 .card {
-    background: #1a1a1a;
-    color: #fff;
-    padding: 40px;
+    background: var(--dark-bg);
+    overflow: hidden;
+    border-radius: 10px;
     transition: var(--transition);
-    border-bottom: 5px solid var(--primary-color);
 }
 
-.card:hover {
-    transform: scale(1.05);
+.card-img {
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.6s ease;
 }
 
-/* Футър */
+.card:hover .card-img {
+    transform: scale(1.1);
+}
+
+.card-info {
+    padding: 30px;
+    color: #fff;
+    text-align: left;
+}
+
+.card-info h3 {
+    color: var(--primary-color);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.price {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    display: block;
+    margin-top: 15px;
+}
+
+/* --- ГАЛЕРИЯ --- */
+.gallery-section {
+    padding: 100px 0;
+    background: #000;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    opacity: 0.8;
+    transition: 0.5s;
+}
+
+.gallery-grid img:hover {
+    opacity: 1;
+    transform: scale(1.03);
+}
+
+/* --- КОНТАКТИ --- */
+.contact-section {
+    padding: 100px 20px;
+    background: var(--dark-bg);
+    color: #fff;
+    text-align: center;
+}
+
+.contact-box {
+    font-size: 1.3rem;
+    line-height: 2.5;
+}
+
+/* --- ФУТЪР --- */
 footer {
     background: #000;
-    color: #777;
-    text-align: center;
+    color: #666;
     padding: 40px;
+    text-align: center;
+    border-top: 1px solid #222;
+}
+
+/* --- НОВО: МОБИЛЕН БУТОН ЗА ОБАЖДАНЕ --- */
+.mobile-call-btn {
+    display: none; /* Скрит на компютри */
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--primary-color);
+    color: #000;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    text-decoration: none;
+    z-index: 1001;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    text-transform: uppercase;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .mobile-call-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 }
